@@ -1,6 +1,6 @@
 # Daylight
 
-Daylight is a 2015 Australian disaster thriller package written by [Ryan Boucher](http://distributedlife.com) and starring [request](), [bluebird](), [lodash]() and a cameo from [Pam Rucinque]().
+Daylight is a 2015 Australian disaster thriller package written by [Ryan Boucher](http://distributedlife.com) and starring [request](https://github.com/request/request), [bluebird](https://github.com/petkaantonov/bluebird/), [lodash](lodash.com), [moment](momentjs.com) and a cameo from [Pam Rucinque](https://twitter.com/PamRucinque).
 
 # Plot
 
@@ -16,7 +16,7 @@ A matcher is a string and if it's found in your stack trace then you can resolve
 
 ## Example
 
-I worked on version 3.0.4 of the [Target Australia iPhone app](). The prior version was 2.0.5 and that old version didn't have Splunk MINT support. Version 3.0.4 was a complete rewrite and none of the old code remained. The trouble was that when uesrs upgraded from 2.0.5 to 3.0.4, if their last experience on 2.0.5 was a crash –likely, then Splunk MINT would pickup the error and ship to us. The problem compounds because Splunk was using the version of the running app (3.0.4) and not the version of the crashing app (2.0.5).
+I worked on version 3.0.4 of the [Target Australia iPhone app](http://www.target.com.au). The prior version was 2.0.5 and that old version didn't have Splunk MINT support. Version 3.0.4 was a complete rewrite and none of the old code remained. The trouble was that when uesrs upgraded from 2.0.5 to 3.0.4, if their last experience on 2.0.5 was a crash –likely, then Splunk MINT would pickup the error and ship to us. The problem compounds because Splunk was using the version of the running app (3.0.4) and not the version of the crashing app (2.0.5).
 
 We got a lot of errors on that first day that stumped us. The version was 3.0.4 but the symbols in the stack trace do not exist in our code base. We worked it out. Then we had to find a way to mark all these errors as resolved in 3.0.4. Then we realised that Splunk MINT wasn't going to work with us.
 
