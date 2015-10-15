@@ -1,0 +1,65 @@
+[
+  {
+    "matcher" : "TargetPhone",
+    "tags": ["salmat"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.4"
+  },
+  {
+    "matcher": "_NSReadAttributedStringFromURLOrData",
+    "tags":  ["threading"],
+    "resolvedVersion": "3.0.5",
+    "status": "resolved",
+    "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "_TTSf4g_g___TFC9TargetApp23CatalogueViewController37catalogueImageViewDidRecognizeGesturefS0_FCS_18CatalogueImageViewT_",
+    "tags": ["carousel-exit"],
+    "resolvedVersion": "3.0.5",
+    "status": "resolved",
+    "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "_TTSf4g_g___TFC9TargetApp28ProductDetailsViewController22showFullScreenCarouselfS0_FCSo19UIGestureRecognizerT_",
+    "tags": ["carousel-exit"],
+    "resolvedVersion": "3.0.5",
+    "status": "resolved",
+    "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "TargetApp.PriceCheckViewController.viewWillDisappear",
+    "tags": ["pricecheck"],
+    "resolvedVersion": "3.0.5",
+    "status": "resolved",
+    "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "TargetApp.SearchResultsViewController.tableView",
+    "tags": ["search"],
+    "resolvedVersion": "3.0.5",
+    "status": "resolved",
+    "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "SplunkNSURLSessionDataDelegateInterceptor",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
+    "require": "ios-only.js",
+    "tags":  ["ios"],
+    "status": "open"
+  },
+  {
+    "matcher": "TargetApp23CatalogueThumbnailsView13preloadImages",
+    "tags":  ["PINRemoteImage"],
+    "status": "open"
+  },
+  {
+    "matcher": "NSLineFragmentRenderingContext dealloc",
+    "tags":  ["threading"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.5",
+    "errorVersion": ["3.0.4"]
+  }
+]
