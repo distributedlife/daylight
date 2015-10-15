@@ -22,7 +22,7 @@ We got a lot of errors on that first day that stumped us. The version was 3.0.4 
 
 # TODO
 [] Swap out contains with regex
-[] Allow matches to be functions
+[x] Allow matchers to be functions
 [] Match only specific versions
 [] Pick up cookie from login request
 [] Remove global state and pass crap around from promise to promise

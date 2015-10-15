@@ -5,10 +5,6 @@ var request = Promise.promisify(require('request'));
 var flatten = require('lodash').flatten;
 var each = require('lodash').each;
 var select = require('lodash').select;
-var contains = require('lodash').contains;
-var moment = require('moment');
-
-var rules = require('./rules.json');
 var cookie = require('./cookie.json').cookie;
 
 var project = process.env.MINT_PROJECT;
@@ -35,16 +31,14 @@ function getErrorOptions (projectId, errorId) {
   };
 }
 
-function updateErrorRequest (projectId, error) {
+function symbolicateOptions (projectId, errorId) {
   return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + error.id + '.json',
-    method: 'PUT',
+    url: 'https://mint.splunk.com/project/' + projectId + '/errors/' + errorId + '/symbolicate',
     headers: {
       'x-splunk-mint-apikey': process.env.MINT_API_KEY,
       'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
       'cookie': cookie
-    },
-    body: JSON.stringify(error)
+    }
   };
 }
 
@@ -98,54 +92,52 @@ function expandErrors () {
   return Promise.settle(promises);
 }
 
-function resolveErrorsWithRule (name, errors, rule) {
-  console.log('Resolving ' + errors.length + ' ' + name + ' errors');
+function symbolicateIfRequired () {
+  var notSymbolicatedString = /^(TargetAppKit|TargetApp)\s0x[0-9a-f]+\s0x[0-9a-f]+\s\+\s[0-9]+$/m;
 
-  var promises = [];
-
-  each(errors, function(e) {
-    e.error.tags = rule.tags;
-    e.error.status = rule.status;
-    //jshint camelcase:false
-    e.error.resolved_at = rule.resolvedVersion;
-    e.error.resolved = moment().format('YYYY-MM-DDThh:mm:ss.ssss');
-
-    var putOptions = updateErrorRequest(project, e.error);
-
-    console.log(rule.status, e.error.id);
-
-    promises.push(request(putOptions, function() {}));
-  });
-
-  return Promise.settle(promises);
-}
-
-function resolveRequireErrors (rule) {
-  var code = require('./' + rule.require);
-
-  var toResolve = select(expandedErrors, function(error) {
-    return code(error);
-  });
-
-  return resolveErrorsWithRule (rule.require, toResolve, rule);
-}
-
-function resolveMatcherErrors (rule) {
-  var toResolve = select(expandedErrors, function(error) {
+  var needsSymbolication = select(expandedErrors, function(error) {
     return select(error.stacktrace, function (string) {
-      return contains(string, rule.matcher);
+      return notSymbolicatedString.test(string);
     }).length > 0;
   });
 
-  return resolveErrorsWithRule (rule.matcher, toResolve, rule);
-}
+  console.log('To symbolicate ' + needsSymbolication.length + ' errors');
 
-function runResolverRules () {
-  var matcherRules = select(rules, 'matcher');
-  var requireRules = select(rules, 'require');
+  function symbolicate (projectId, i, parallel) {
+    var error = needsSymbolication[i];
+    if (!error) {
+      return;
+    }
 
-  each(matcherRules, resolveMatcherErrors);
-  each(requireRules, resolveRequireErrors);
+    console.log('symbolicating:', (i + 1), 'of', needsSymbolication.length, '(', error.error.id, ')');
+
+    var requestOpts = symbolicateOptions(projectId, error.error.id);
+
+    return request(requestOpts).spread(function (res, body) {
+      var result;
+      try {
+        result = JSON.parse(body);
+      } catch (e) {
+        console.error(e);
+      }
+
+      if (result.status !== 'ok') {
+        console.log(result);
+      } else {
+        error.stacktrace = result.stacktrace;
+      }
+
+      return symbolicate(projectId, i + parallel, parallel);
+    });
+  }
+
+  return Promise.settle([
+    symbolicate(project, 0, 5),
+    symbolicate(project, 1, 5),
+    symbolicate(project, 2, 5),
+    symbolicate(project, 3, 5),
+    symbolicate(project, 4, 5),
+  ]);
 }
 
 function logError (e) {
@@ -155,5 +147,5 @@ function logError (e) {
 getAllTheErrors()
   .then(flattenErrors)
   .then(expandErrors)
-  .then(runResolverRules)
+  .then(symbolicateIfRequired)
   .catch(logError);
