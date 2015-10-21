@@ -118,11 +118,15 @@ function symbolicateIfRequired () {
       try {
         result = JSON.parse(body);
       } catch (e) {
-        console.error(e);
+        console.error(requestOpts.url, e);
       }
 
       if (result.status !== 'ok') {
         console.log(result);
+
+        if (result.status === null) {
+          console.log(error.error.app_versions);
+        }
       } else {
         error.stacktrace = result.stacktrace;
       }

@@ -9,28 +9,18 @@ var unique = require('lodash').unique;
 var select = require('lodash').select;
 var contains = require('lodash').contains;
 var reduce = require('lodash').reduce;
-var cookie = require('./cookie.json').cookie;
 
 var project = process.env.MINT_PROJECT;
 
-function listErrorsOptions (projectId, page) {
-  return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90&page=' + page,
-    headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-      'cookie': cookie
-    }
-  };
-}
-
-var errors = [];
+var listErrorsOptions = require('./request-opts').listErrorsOptions;
+var logError = require('./workflow').logError;
+var flattenErrors = require('./workflow').flattenErrors;
 
 function morePages (currentPageData) {
   return (currentPageData.page < currentPageData.pages);
 }
 
-function getPageOfErrorData (page) {
+function getPageOfErrorData (page, errors) {
   var requestOpts = listErrorsOptions(project, page);
 
   console.log('Getting error page: ' + page);
@@ -42,16 +32,20 @@ function getPageOfErrorData (page) {
       errors.push(currentPageData.data);
 
       if (morePages(currentPageData)) {
-        return getPageOfErrorData(page + 1);
+        return getPageOfErrorData(page + 1, errors);
+      } else {
+        return errors;
       }
     });
 }
 
 function getAllTheErrors () {
-  return getPageOfErrorData(1);
+  var errors = [];
+
+  return getPageOfErrorData(1, errors);
 }
 
-function printTags () {
+function printTags (errors) {
   var tagSet = unique(flatten(pluck(errors, 'tags')));
 
   var grandTotal = 0;
@@ -71,14 +65,6 @@ function printTags () {
   });
 
   console.log('Grand Total', grandTotal);
-}
-
-function flattenErrors () {
-  errors = flatten(errors);
-}
-
-function logError (e) {
-  console.error(e);
 }
 
 getAllTheErrors()

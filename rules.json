@@ -46,13 +46,83 @@
     "status": "wontfix"
   },
   {
+    "matcher": "SplunkNSURLConnectionDataDelegateInterceptor",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
+    "matcher": "GAIBatchingDispatcher",
+    "tags":  ["google"],
+    "status": "wontfix"
+  },
+  {
+    "matcher": "GFlookback_sendEvent",
+    "tags":  ["lookback"],
+    "status": "open"
+  },
+  {
+    "matcher": "__SplunkNSURLConnectionSendAsynchronousRequestQueueCompletionHandler_block_invoke",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
+    "matcher": "SLKSSUUID",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
     "require": "ios-only.js",
     "tags":  ["ios"],
     "status": "open"
   },
   {
+    "require": "needs-a-look.js",
+    "tags":  ["log", "needs-a-look"],
+    "status": "open"
+  },
+  {
+    "matcher": "TargetApp.BasketViewController.viewDidLoad",
+    "tags":  ["TargetAppBasketViewControllerviewDidLoad"],
+    "status": "open"
+  },
+  {
+    "matcher": "_TTSf4s_n___TFC9TargetApp23ProductSizeSelectorCellcfMS0_FT5frameVSC6CGRect_S0_",
+    "tags":  ["TargetApp.ProductSizeSelectorView"],
+    "status": "open"
+  },
+  {
+    "matcher": "_TTSf4g_n___TFC9TargetApp17ProductActionViewcfMS0_FT9viewModelC12TargetAppKit23ProductDetailsViewModel_S0_",
+    "tags":  ["unowned-self"],
+    "status": "open"
+  },
+  {
+    "matcher": "_TTSf4g___TFC9TargetApp28ProductDetailsViewController8loadViewfS0_FT_T_",
+    "tags":  ["unowned-self"],
+    "status": "open"
+  },
+  {
+    "matcher": "_TTSf4g___TFC9TargetApp31BaseWebNavigationViewController27addExtraMarginToContentBodyfS0_FT_T_",
+    "tags":  ["javascript-eval"],
+    "status": "open"
+  },
+  {
+    "matcher": "_TTSf4g___TFC9TargetApp26StoreDetailsViewController8loadViewfS0_FT_T_",
+    "tags":  ["constrain-minimizeMapButton"],
+    "status": "open"
+  },
+  {
     "matcher": "TargetApp23CatalogueThumbnailsView13preloadImages",
     "tags":  ["PINRemoteImage"],
+    "status": "open"
+  },
+  {
+    "matcher": "TargetApp.CatalogueViewController.scrollViewDidEndDecelerating",
+    "tags":  ["decelerating"],
+    "status": "open"
+  },
+  {
+    "matcher": "TargetApp.BaseNavigationViewController.viewDidLoad",
+    "tags":  ["incomprehensible"],
     "status": "open"
   },
   {

@@ -9,44 +9,11 @@ var contains = require('lodash').contains;
 var moment = require('moment');
 
 var rules = require('./rules.json');
-var cookie = require('./cookie.json').cookie;
+var listErrorsOptions = require('./request-opts').listErrorsOptions;
+var getErrorOptions = require('./request-opts').getErrorOptions;
+var updateErrorRequest = require('./request-opts').updateErrorRequest;
 
 var project = process.env.MINT_PROJECT;
-
-function listErrorsOptions (projectId, page) {
-  return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90&status=open&page=' + page,
-    headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-      'cookie': cookie
-    }
-  };
-}
-
-function getErrorOptions (projectId, errorId) {
-  return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + errorId + '.json',
-    headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-      'cookie': cookie
-    }
-  };
-}
-
-function updateErrorRequest (projectId, error) {
-  return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + error.id + '.json',
-    method: 'PUT',
-    headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-      'cookie': cookie
-    },
-    body: JSON.stringify(error)
-  };
-}
 
 var errors = [];
 var expandedErrors = [];
@@ -56,7 +23,7 @@ function morePages (currentPageData) {
 }
 
 function getPageOfErrorData (page) {
-  var requestOpts = listErrorsOptions(project, page);
+  var requestOpts = listErrorsOptions(project, page, {status: 'open'});
 
   console.log('Getting error page: ' + page);
 
@@ -85,15 +52,23 @@ function expandErrors () {
 
   var promises = [];
 
-  each(errors, function (error) {
+  function expand (project, i, parallel) {
+    var error = errors[i];
+
+    console.log('expanding:', (i + 1), 'of', errors.length, '(', error.id, ')');
+
     var requestOpts = getErrorOptions(project, error.id);
-
-    var p = request(requestOpts).spread(function (response, body) {
+    return request(requestOpts).spread(function (response, body) {
       expandedErrors.push(JSON.parse(body));
-    });
 
-    promises.push(p);
-  });
+      return expand(project, i + parallel, parallel);
+    });
+  }
+
+  var parallel = 10;
+  for (var i = 0; i < parallel; i += 1) {
+    promises.push(expand(project, i, parallel));
+  }
 
   return Promise.settle(promises);
 }
