@@ -11,7 +11,7 @@ var project = process.env.MINT_PROJECT;
 
 function listErrorsOptions (projectId, page) {
   return {
-    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90&status=open&page=' + page,
+    url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90&status=open&tag=log&page=' + page,
     headers: {
       'x-splunk-mint-apikey': process.env.MINT_API_KEY,
       'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,

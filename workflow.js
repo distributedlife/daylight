@@ -21,8 +21,8 @@ function morePages (currentPageData) {
   return (currentPageData.page < currentPageData.pages);
 }
 
-function getPageOfErrorData (page, errors) {
-  var requestOpts = listErrorsOptions(project, page);
+function getPageOfErrorData (page, errors, options) {
+  var requestOpts = listErrorsOptions(project, page, options);
 
   console.log('Getting error page: ' + page);
 
@@ -33,7 +33,7 @@ function getPageOfErrorData (page, errors) {
       errors.push(currentPageData.data);
 
       if (morePages(currentPageData)) {
-        return getPageOfErrorData(page + 1, errors);
+        return getPageOfErrorData(page + 1, errors, options);
       } else {
         return errors;
       }
@@ -46,8 +46,15 @@ function getAllTheErrors () {
   return getPageOfErrorData(1, errors);
 }
 
+function getErrors (options) {
+  var errors = [];
+
+  return getPageOfErrorData(1, errors, options);
+}
+
 module.exports = {
   flattenErrors: flattenErrors,
   logError: logError,
-  getAllTheErrors:getAllTheErrors
+  getAllTheErrors: getAllTheErrors,
+  getErrors: getErrors
 };

@@ -21,17 +21,6 @@ function listErrorsOptions (projectId, page, opts) {
   };
 }
 
-// function listErrorsOptions (projectId, page) {
-//   return {
-//     url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90&status=open&page=' + page,
-//     headers: {
-//       'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-//       'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-//       'cookie': cookie
-//     }
-//   };
-// }
-
 function getErrorOptions (projectId, errorId) {
   return {
     url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + errorId + '.json',
@@ -48,14 +37,13 @@ function updateErrorRequest (projectId, error) {
     url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + error.id + '.json',
     method: 'PUT',
     headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
-      'cookie': cookie
+      'cookie': cookie,
+      'content-type':'application/json',
+      'x-csrftoken': 'd3e52dff199b665daf3526cc97a90d6eeb13769040b91a32333790fcddde1a19'
     },
     body: JSON.stringify(error)
   };
 }
-
 
 module.exports = {
   listErrorsOptions: listErrorsOptions,
