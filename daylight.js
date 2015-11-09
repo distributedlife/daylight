@@ -9,29 +9,14 @@ var moment = require('moment');
 
 var rules = require('./rules.json');
 
-var getErrorOptions = require('./request-opts').getErrorOptions;
 var updateErrorRequest = require('./request-opts').updateErrorRequest;
 
 var logError = require('./workflow').logError;
 var flattenErrors = require('./workflow').flattenErrors;
 var getErrors = require('./workflow').getErrors;
+var expandErrors = require('./workflow').expandErrors;
 
 var project = process.env.MINT_PROJECT;
-
-function expandErrors (errors) {
-  console.log('expanding ' + errors.length + ' errors');
-
-  function expand (error) {
-    console.log('expanding (', error.id, ')');
-
-    var requestOpts = getErrorOptions(project, error.id);
-    return request(requestOpts).spread(function (response, body) {
-      return JSON.parse(body);
-    });
-  }
-
-  return Promise.map(errors, expand, {concurrency: 10});
-}
 
 function resolveErrorsWithRule (name, errors, rule) {
   console.log('Resolving ' + errors.length + ' ' + name + ' errors');
@@ -75,12 +60,24 @@ function resolveMatcherErrors (rule, errors) {
   return resolveErrorsWithRule (rule.matcher, toResolve, rule);
 }
 
+function resolveAsyncErrors (rule, errors) {
+  var code = require('./' + rule.async);
+
+  Promise.map(errors, code.async, {concurrency: 5}).then(function (errors) {
+    var toResolve = select(errors, code.check);
+
+    return resolveErrorsWithRule (rule.async, toResolve, rule);
+  });
+}
+
 function runResolverRules (errors) {
   var matcherRules = select(rules, 'matcher');
   var requireRules = select(rules, 'require');
+  var asyncRules = select(rules, 'async');
 
   each(matcherRules, function (rule) { resolveMatcherErrors(rule, errors); });
   each(requireRules, function (rule) { resolveRequireErrors(rule, errors); });
+  each(asyncRules, function (rule) { resolveAsyncErrors(rule, errors); });
 }
 
 getErrors({status: 'open', tag: 'log'})

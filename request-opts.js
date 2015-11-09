@@ -14,8 +14,6 @@ function listErrorsOptions (projectId, page, opts) {
   return {
     url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors.json?days=90' + qs,
     headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
       'cookie': cookie
     }
   };
@@ -25,8 +23,6 @@ function getErrorOptions (projectId, errorId) {
   return {
     url: 'https://mint.splunk.com/api/v1/project/' + projectId + '/errors/' + errorId + '.json',
     headers: {
-      'x-splunk-mint-apikey': process.env.MINT_API_KEY,
-      'x-splunk-mint-auth-token': process.env.MINT_AUTH_TOKEN,
       'cookie': cookie
     }
   };

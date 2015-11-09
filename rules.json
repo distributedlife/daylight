@@ -34,7 +34,7 @@
     "errorVersion": ["3.0.4"]
   },
   {
-    "matcher": "TargetApp.SearchResultsViewController.tableView",
+    "matcher": "SearchResultsViewController.tableView",
     "tags": ["search"],
     "resolvedVersion": "3.0.5",
     "status": "resolved",
@@ -51,13 +51,28 @@
     "status": "wontfix"
   },
   {
+    "matcher": "SplunkNSCFURLSessionDataTaskWithRequestCompletionHandler",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
     "matcher": "GAIBatchingDispatcher",
     "tags":  ["google"],
     "status": "wontfix"
   },
   {
-    "matcher": "GFlookback_sendEvent",
+    "matcher": "lookback",
     "tags":  ["lookback"],
+    "status": "open"
+  },
+  {
+    "matcher": "Lookback",
+    "tags":  ["lookback"],
+    "status": "open"
+  },
+  {
+    "matcher": "supportedOrientations",
+    "tags":  ["supported-orientations"],
     "status": "open"
   },
   {
@@ -77,7 +92,7 @@
   },
   {
     "require": "needs-a-look.js",
-    "tags":  ["log", "needs-a-look"],
+    "tags":  ["needs-a-look"],
     "status": "open"
   },
   {
@@ -116,13 +131,53 @@
     "status": "open"
   },
   {
-    "matcher": "TargetApp.CatalogueViewController.scrollViewDidEndDecelerating",
+    "matcher": "CatalogueViewController.scrollViewDidEndDecelerating",
     "tags":  ["decelerating"],
     "status": "open"
   },
   {
-    "matcher": "TargetApp.BaseNavigationViewController.viewDidLoad",
+    "matcher": "BaseNavigationViewController.viewDidLoad",
     "tags":  ["incomprehensible"],
+    "status": "open"
+  },
+  {
+    "matcher": "specialized specialized",
+    "tags":  ["specialized-specialized"],
+    "status": "open"
+  },
+  {
+    "matcher": "partial apply for static",
+    "tags":  ["partial-apply-for-static"],
+    "status": "open"
+  },
+  {
+    "matcher": "InformationCell.init",
+    "tags":  ["info-cell-init"],
+    "status": "open"
+  },
+  {
+    "matcher": "AppNavigationService.navigateToHome",
+    "tags":  ["navigate-to-home"],
+    "status": "open"
+  },
+  {
+    "matcher": "BrowseViewController.loadView",
+    "tags":  ["browse-view-controller-load-view"],
+    "status": "open"
+  },
+  {
+    "matcher": "StoreDetailsViewController.loadView",
+    "tags":  ["store-details-view-controller-load-view"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductDetailsViewController.(loadView",
+    "tags":  ["product-details-view-controller-load-view"],
+    "status": "open"
+  },
+  {
+    "matcher": "SKT",
+    "tags":  ["support-kit"],
     "status": "open"
   },
   {
@@ -131,5 +186,17 @@
     "status": "resolved",
     "resolvedVersion": "3.0.5",
     "errorVersion": ["3.0.4"]
+  },
+  {
+    "matcher": "TargetApp ExpandingModal.(constrainAbove(ExpandingModal)",
+    "tags":  ["ipad-landscape-pdp"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.6"
+  },
+  {
+    "matcher": "ExpandingModal.constrainAbove",
+    "tags":  ["ipad-landscape-pdp"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.6"
   }
 ]
