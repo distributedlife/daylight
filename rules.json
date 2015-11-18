@@ -93,7 +93,8 @@
   {
     "matcher": "FavouriteOffersTableView.init",
     "tags":  ["favourite-offers-table-view"],
-    "status": "open"
+    "status": "resolved",
+    "resolvedVersion": "3.0.7"
   },
   {
     "matcher": "lookback",
@@ -239,17 +240,20 @@
   {
     "matcher": "ProductSizeSelectorCell.init",
     "tags":  ["product-size-selector-cell"],
-    "status": "open"
+    "status": "resolved",
+    "resolvedVersion": "3.0.7"
   },
   {
     "matcher": "ProductSizeDropdown.init",
     "tags":  ["product-size-dropdown"],
-    "status": "open"
+    "status": "resolved",
+    "resolvedVersion": "3.0.7"
   },
   {
     "matcher": "SearchResultsViewController.keyboardDidShow",
     "tags":  ["search-results-keyboard-did-show"],
-    "status": "open"
+    "status": "resolved",
+    "resolvedVersion": "3.0.7"
   },
   {
     "matcher": "CatalogueThumbnailsView.updateWithCatalogueThumbnailsViewModel",
