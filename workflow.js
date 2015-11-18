@@ -18,7 +18,6 @@ function logError (e) {
 }
 
 function morePages (currentPageData) {
-  // return false;
   return (currentPageData.page < currentPageData.pages);
 }
 
@@ -42,6 +41,9 @@ function getPageOfErrorData (page, errors, options) {
       } else {
         return errors;
       }
+    }).catch(function (e) {
+      console.error(e);
+      return getPageOfErrorData(page, errors, request-opts);
     });
 }
 
@@ -66,10 +68,13 @@ function expandErrors (errors) {
     var requestOpts = getErrorOptions(project, error.id);
     return request(requestOpts).spread(function (response, body) {
       return JSON.parse(body);
+    }).catch(function (e) {
+      console.error(e);
+      return expand(error);
     });
   }
 
-  return Promise.map(errors, expand, {concurrency: 10});
+  return Promise.map(errors, expand, {concurrency: 20});
 }
 
 

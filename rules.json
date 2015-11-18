@@ -46,6 +46,11 @@
     "status": "wontfix"
   },
   {
+    "matcher": "Mint",
+    "tags":  ["splunk"],
+    "status": "wontfix"
+  },
+  {
     "matcher": "SplunkNSURLConnectionDataDelegateInterceptor",
     "tags":  ["splunk"],
     "status": "wontfix"
@@ -61,6 +66,36 @@
     "status": "wontfix"
   },
   {
+    "matcher": "TAGDataLayerPersistentStoreImpl",
+    "tags":  ["google"],
+    "status": "wontfix"
+  },
+  {
+    "matcher": "GAIReachabilityChecker",
+    "tags":  ["google"],
+    "status": "wontfix"
+  },
+  {
+    "matcher": "StoreListViewController.tableView",
+    "tags":  ["weird-store-list"],
+    "status": "open"
+  },
+  {
+    "matcher": "GAIUncaughtExceptionHandler",
+    "tags":  ["google"],
+    "status": "open"
+  },
+  {
+    "matcher": "OfferInstoreRedemptionView.content.getter",
+    "tags":  ["redeem-offer"],
+    "status": "open"
+  },
+  {
+    "matcher": "FavouriteOffersTableView.init",
+    "tags":  ["favourite-offers-table-view"],
+    "status": "open"
+  },
+  {
     "matcher": "lookback",
     "tags":  ["lookback"],
     "status": "open"
@@ -73,6 +108,31 @@
   {
     "matcher": "supportedOrientations",
     "tags":  ["supported-orientations"],
+    "status": "open"
+  },
+  {
+    "matcher": "AppPresenter.createRootViewController",
+    "tags":  ["app-presenter-create-root-view-controller"],
+    "status": "open"
+  },
+  {
+    "matcher": "OfferHeaderView.updateWithOffer",
+    "tags":  ["update-with-offer"],
+    "status": "open"
+  },
+  {
+    "matcher": "PricingNotFoundView",
+    "tags":  ["pricing-not-found-view"],
+    "status": "open"
+  },
+  {
+    "matcher": "block_destroy_helper50",
+    "tags":  ["block-destroy-helper"],
+    "status": "open"
+  },
+  {
+    "matcher": "ScanViewFinderView",
+    "tags":  ["scan-view-finder-view"],
     "status": "open"
   },
   {
@@ -173,6 +233,37 @@
   {
     "matcher": "ProductDetailsViewController.(loadView",
     "tags":  ["product-details-view-controller-load-view"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.6"
+  },
+  {
+    "matcher": "ProductSizeSelectorCell.init",
+    "tags":  ["product-size-selector-cell"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductSizeDropdown.init",
+    "tags":  ["product-size-dropdown"],
+    "status": "open"
+  },
+  {
+    "matcher": "SearchResultsViewController.keyboardDidShow",
+    "tags":  ["search-results-keyboard-did-show"],
+    "status": "open"
+  },
+  {
+    "matcher": "CatalogueThumbnailsView.updateWithCatalogueThumbnailsViewModel",
+    "tags":  ["catalogue-update-thumbnail"],
+    "status": "open"
+  },
+  {
+    "matcher": "FileRepository save:andContents:andFailureBlock",
+    "tags":  ["file-repo-save-failure"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductCarouselView.scrollViewDidScroll",
+    "tags":  ["carousel-view-did-scroll"],
     "status": "open"
   },
   {

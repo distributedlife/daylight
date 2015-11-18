@@ -4,6 +4,7 @@ var each = require('lodash').each;
 var map = require('lodash').map;
 var unique = require('lodash').unique;
 var pluck = require('lodash').pluck;
+var sortBy = require('lodash').sortBy;
 var moment = require('moment');
 
 var logError = require('./workflow').logError;

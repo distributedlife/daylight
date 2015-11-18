@@ -94,10 +94,13 @@ function symbolicateIfRequired (errors) {
       }
 
       return error;
+    }).catch(function (e) {
+      console.error(e);
+      return symbolicate(error);
     });
   }
 
-  return Promise.map(needsSymbolication, symbolicate, { concurrency: 10 });
+  return Promise.map(needsSymbolication, symbolicate, { concurrency: 20 });
 }
 
 function printSummary () {
