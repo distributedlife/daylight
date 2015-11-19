@@ -63,7 +63,7 @@ function resolveMatcherErrors (rule, errors) {
 function resolveAsyncErrors (rule, errors) {
   var code = require('./' + rule.async);
 
-  Promise.map(errors, code.async, {concurrency: 5}).then(function (errors) {
+  Promise.map(errors, code.async, {concurrency: 25}).then(function (errors) {
     var toResolve = select(errors, code.check);
 
     return resolveErrorsWithRule (rule.async, toResolve, rule);

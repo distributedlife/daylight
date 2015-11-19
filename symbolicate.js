@@ -48,7 +48,7 @@ function expandErrors (errors) {
     });
   }
 
-  return Promise.map(errors, expand, {concurrency: 10});
+  return Promise.map(errors, expand, {concurrency: 25});
 }
 
 function symbolicateIfRequired (errors) {
@@ -100,7 +100,7 @@ function symbolicateIfRequired (errors) {
     });
   }
 
-  return Promise.map(needsSymbolication, symbolicate, { concurrency: 20 });
+  return Promise.map(needsSymbolication, symbolicate, { concurrency: 25 });
 }
 
 function printSummary () {
