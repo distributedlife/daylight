@@ -97,16 +97,6 @@
     "resolvedVersion": "3.0.7"
   },
   {
-    "matcher": "lookback",
-    "tags":  ["lookback"],
-    "status": "open"
-  },
-  {
-    "matcher": "Lookback",
-    "tags":  ["lookback"],
-    "status": "open"
-  },
-  {
     "matcher": "supportedOrientations",
     "tags":  ["supported-orientations"],
     "status": "open"
@@ -153,7 +143,7 @@
   },
   {
     "require": "needs-a-look.js",
-    "tags":  ["needs-a-look"],
+    "tags":  ["log"],
     "status": "open"
   },
   {
@@ -256,6 +246,11 @@
     "resolvedVersion": "3.0.7"
   },
   {
+    "matcher": "HomeViewController.didDismissSearchController",
+    "tags":  ["search-did-dismiss-search-controller"],
+    "status": "open"
+  },
+  {
     "matcher": "CatalogueThumbnailsView.updateWithCatalogueThumbnailsViewModel",
     "tags":  ["catalogue-update-thumbnail"],
     "status": "open"
@@ -293,5 +288,237 @@
     "tags":  ["ipad-landscape-pdp"],
     "status": "resolved",
     "resolvedVersion": "3.0.6"
-  }
+  },
+  {
+    "matcher": "BaseWebNavigationViewController.addExtraMarginToContentBody",
+    "tags":  ["add-extra-margin-to-content"],
+    "status": "open"
+  },
+  {
+    "matcher": "Network.setup",
+    "tags":  ["network-setup"],
+    "status": "open"
+  },
+  {
+    "matcher": "AppLabel.drawTextInRect",
+    "tags":  ["draw-text-in-rect"],
+    "status": "open"
+  },
+  {
+    "matcher": "objc_msgSend",
+    "tags":  ["msg-send"],
+    "status": "open"
+  },
+  {
+    "matcher": "__exceptionPreprocess",
+    "tags":  ["exception-preprocess"],
+    "status": "open"
+  },
+  {
+    "matcher": "addSubclass",
+    "tags":  ["add-subclass"],
+    "status": "open"
+  },
+  {
+    "matcher": "bmalloc::VMHeap::grow",
+    "tags":  ["vmheap-grow"],
+    "status": "open"
+  },
+  {
+    "matcher": "__pthread_kill",
+    "tags":  ["pthread-kill"],
+    "status": "open"
+  },
+  {
+    "matcher": "___forwarding___",
+    "tags":  ["forwarding"],
+    "status": "open"
+  },
+  {
+    "matcher": "__simple_bprintf",
+    "tags":  ["not-so-simple-bprintf"],
+    "status": "open"
+  },
+  {
+    "matcher": "vm_read_overwrite",
+    "tags":  ["vm-read-overwrite"],
+    "status": "open"
+  },
+  {
+    "matcher": "cache_getImp",
+    "tags":  ["no-imps-left-in-cache"],
+    "status": "open"
+  },
+  {
+    "matcher": "__stable_sort",
+    "tags":  ["unstable-sort"],
+    "status": "open"
+  },
+  {
+    "matcher": "__CFUniCharLoadBitmapData",
+    "tags":  ["unichar-load-bitmap-data"],
+    "status": "open"
+  },
+  {
+    "matcher": "CFUniCharCompatibilityDecompose",
+    "tags":  ["unichar-compatibility-decompose"],
+    "status": "open"
+  },
+  {
+    "matcher": "WTFCrash",
+    "tags":  ["js-wtf-crash"],
+    "status": "open"
+  },
+  {
+    "matcher": "emit_op_enumerator_generic_pname",
+    "tags":  ["js-jit"],
+    "status": "open"
+  },
+  {
+    "matcher": "free_class",
+    "tags":  ["free-class"],
+    "status": "open"
+  },
+  {
+    "matcher": "_os_lock_corruption_abort",
+    "tags":  ["os-lock-corruption-abort"],
+    "status": "open"
+  },
+  {
+    "matcher": "__CFStringAppendBytes",
+    "tags":  ["append-bytes"],
+    "status": "open"
+  },
+  {
+    "matcher": "???",
+    "tags":  ["wtf"],
+    "status": "open"
+  },
+  {
+    "matcher": "CatalogueViewController.catalogueImageViewDidRecognizeGesture",
+    "tags":  ["carousel-exit-2"],
+    "status": "open"
+  },
+  {
+    "matcher": "CatalogueViewController.(catalogueImageViewDidRecognizeGesture",
+    "tags":  ["carousel-exit-2"],
+    "status": "open"
+  },
+  {
+    "matcher": "CatalogueImageView.updateWithImageUrl",
+    "tags":  ["catalogue-update-with-image-url"],
+    "status": "open"
+  },
+  {
+    "matcher": "FavouriteOffersTableDataProvider.tableView",
+    "tags":  ["fav-offers-table-data-provider-table-view"],
+    "status": "open"
+  },
+  {
+    "matcher": "CFUniCharMapTo",
+    "tags":  ["unicode-char-map"],
+    "status": "open"
+  },
+  {
+    "matcher": "GFLogger",
+    "tags":  ["logger"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductDetailsViewController.showFullScreenCarousel",
+    "tags":  ["carousel-exit-2"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductDetailsViewController.(showFullScreenCarousel",
+    "tags":  ["carousel-exit-2"],
+    "status": "open"
+  },
+  {
+    "matcher": "ProductFavouriteButton.createProductFavouriteButton",
+    "tags":  ["create-product-favourite-button"],
+    "status": "open"
+  },
+  {
+    "require": "304-ignore.js",
+    "tags":  ["no-symbols-304"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.5"
+  },
+  {
+    "async": "305-symbolication-500.js",
+    "tags":  ["symbolication-500-305"],
+    "status": "resolved",
+    "resolvedVersion": "3.0.6"
+  },
+  { "hash": "5a38bd7e56b4fb4d1fba8921a89e38a32cacd6f7", "tags": ["unknown-group-1"], "status": "open"},
+  { "hash": "67b79126369773e38a343111e7bed6789c227162", "tags": ["unknown-group-2"], "status": "open"},
+  { "hash": "845cefd454b51adb2992598428d12e5beb84edd8", "tags": ["unknown-group-3"], "status": "open"},
+  { "hash": "58f77c5caa17a2498d08f07efe667119bbf51845", "tags": ["unknown-group-4"], "status": "open"},
+  { "hash": "0041044fa4972e8cc74389006c3d143533df9ace", "tags": ["unknown-group-5"], "status": "open"},
+  { "hash": "02942ad422a6c7eb29ffd00efe3b300e81ded3ff", "tags": ["unknown-group-6"], "status": "open"},
+  { "hash": "0be8167428bb80c75cf3dddcd328b58dcfb6cf02", "tags": ["unknown-group-9"], "status": "open"},
+  { "hash": "104663d19f736b326d60b8db57777ace41b22235", "tags": ["unknown-group-10"], "status": "open"},
+  { "hash": "15f848f290d44de62bcd6cf8d7f0f2bd4a840364", "tags": ["unknown-group-11"], "status": "open"},
+  { "hash": "18d75ccf884ab5558416908a2ba6334c438e8778", "tags": ["unknown-group-12"], "status": "open"},
+  { "hash": "1aad5c76ad01c2338bd85e3ac548414c21eb208e", "tags": ["unknown-group-13"], "status": "open"},
+  { "hash": "1d1973d24dd9ef753ff7e2de6e89f8b3476c2595", "tags": ["unknown-group-14"], "status": "open"},
+  { "hash": "20163457cfc7078a6dafaee3a5f24ae97ac257b1", "tags": ["unknown-group-15"], "status": "open"},
+  { "hash": "203a9bf2933ed9cacb9d159039c3784bfb09a9f9", "tags": ["unknown-group-16"], "status": "open"},
+  { "hash": "2a6c541abeff9ad37f7ced6bc57aaa5a87f5438d", "tags": ["unknown-group-17"], "status": "open"},
+  { "hash": "2debcb500c528c1f09e9bdb80974d4566798ad7e", "tags": ["unknown-group-18"], "status": "open"},
+  { "hash": "33c23d3835028267890a3302307dd2ea00ae8e80", "tags": ["unknown-group-19"], "status": "open"},
+  { "hash": "35c44bef478f4fdb1c62c828796aa7c820e4bbd7", "tags": ["unknown-group-20"], "status": "open"},
+  { "hash": "368ed5c1474c742412bccd610bbd03cda76292a9", "tags": ["unknown-group-21"], "status": "open"},
+  { "hash": "4436dc44e7e2f13816fab505a9f9aa746e8490a6", "tags": ["unknown-group-22"], "status": "open"},
+  { "hash": "45e6f0f7073e5f69a9375463a75ab9c2fb03e5bf", "tags": ["unknown-group-23"], "status": "open"},
+  { "hash": "4d2041f2c36f4bfba62fab8189b98560d3afb118", "tags": ["unknown-group-24"], "status": "open"},
+  { "hash": "4db59ce5607832a4e8cb96081e5855fd52d3926d", "tags": ["unknown-group-25"], "status": "open"},
+  { "hash": "58f77c5caa17a2498d08f07efe667119bbf51845", "tags": ["unknown-group-26"], "status": "open"},
+  { "hash": "60087933f711bcf3165fb4433120b6cead9464d4", "tags": ["unknown-group-27"], "status": "open"},
+  { "hash": "777ea8af9c45f467f1a57cd169a4f8fc4f826a90", "tags": ["unknown-group-28"], "status": "open"},
+  { "hash": "7cd81654870b388fa8dc0813b50638d01aaa4718", "tags": ["unknown-group-29"], "status": "open"},
+  { "hash": "81eb3a0dba700dc151e2590955f64598f2b2efa3", "tags": ["unknown-group-30"], "status": "open"},
+  { "hash": "8923dc6c303f547c0b9c65978067d4eb372a3440", "tags": ["unknown-group-31"], "status": "open"},
+  { "hash": "8fa3cbe1a45030028918f0721ed14530871f36c0", "tags": ["unknown-group-32"], "status": "open"},
+  { "hash": "90e053ae190e975344aae97a631ac59a8ace8c5c", "tags": ["unknown-group-33"], "status": "open"},
+  { "hash": "94d8b4f091c4d4b928ca38e90a1861c3bec94ba8", "tags": ["unknown-group-34"], "status": "open"},
+  { "hash": "95ed6197dd45496ff3e28b7d9065788e90188016", "tags": ["unknown-group-35"], "status": "open"},
+  { "hash": "99cab6c42b197c558d840d04944268e18173d0aa", "tags": ["unknown-group-36"], "status": "open"},
+  { "hash": "a101648dcdb5c787bfd886c48e335ace9949024a", "tags": ["unknown-group-37"], "status": "open"},
+  { "hash": "a3c6ac2f2f5f0225b9e2d8b5b87022da8c5e6a97", "tags": ["unknown-group-38"], "status": "open"},
+  { "hash": "a87d1b01eb6011a1029e51a60ef385228eb322ee", "tags": ["unknown-group-39"], "status": "open"},
+  { "hash": "abdfa5259678d59c7ef9b020bfe57a081eb42a48", "tags": ["unknown-group-40"], "status": "open"},
+  { "hash": "ae2f2d33720a0caf8273d9dc62f608bffb2744ad", "tags": ["unknown-group-41"], "status": "open"},
+  { "hash": "b0597abd62389cffad27ca6b4d91f6cd060d088b", "tags": ["unknown-group-42"], "status": "open"},
+  { "hash": "b7103484ccc302ebafb6db10a2bf06cba3efb364", "tags": ["unknown-group-43"], "status": "open"},
+  { "hash": "bc4840de22ed55d9c9c5409cdff41a0326b82fab", "tags": ["unknown-group-44"], "status": "open"},
+  { "hash": "c210a5aff95ddd71e6f8e4c7a5a94e3784c9efab", "tags": ["unknown-group-45"], "status": "open"},
+  { "hash": "c58ecc6aca4f652020be742d5ba84d90fb776e9f", "tags": ["unknown-group-46"], "status": "open"},
+  { "hash": "cd346a5018d081bba5debba01e925e63000bc4af", "tags": ["unknown-group-47"], "status": "open"},
+  { "hash": "d215e995b6a1c1b0906f57e4a32831aec3231db2", "tags": ["unknown-group-48"], "status": "open"},
+  { "hash": "d6fce622b572c59326361e325629650b1aab83e2", "tags": ["unknown-group-49"], "status": "open"},
+  { "hash": "d7cdaa8b30efbb81a367e4735e3a198a4889e599", "tags": ["unknown-group-50"], "status": "open"},
+  { "hash": "da04de3311ab4fa35348a66beb979bb98f25912e", "tags": ["unknown-group-51"], "status": "open"},
+  { "hash": "daca6c7918781767a4d75388f4c7512a88c0e753", "tags": ["unknown-group-52"], "status": "open"},
+  { "hash": "e677c33a65d8967d3f9978f956c130eadb85de07", "tags": ["unknown-group-53"], "status": "open"},
+  { "hash": "f4ea31a3e1568cc8af38655683967db01c686fb0", "tags": ["unknown-group-54"], "status": "open"},
+  { "hash": "f73fc45398f2813fd7c5335ece5144ba8b95bb80", "tags": ["unknown-group-55"], "status": "open"},
+  { "hash": "f93111262fe787303807466eeeeaa7812a92cebf", "tags": ["unknown-group-56"], "status": "open"},
+  { "hash": "fb1fcb55c170d2950f6a6bc0ad74748bd478ce7d", "tags": ["unknown-group-57"], "status": "open"},
+  { "hash": "170c51e4d3495114e49516c65a536c1d450f713f", "tags": ["unknown-group-58"], "status": "open"},
+  { "hash": "051a24aefdbf3ec1521eaec0231007953e0e5232", "tags": ["unknown-group-59"], "status": "open"},
+  { "hash": "110a1c46ba9a493198480a2de2bb8398e53c6917", "tags": ["unknown-group-60"], "status": "open"},
+  { "hash": "04ea49642f49ac416fca3e9a57c2ecc0b569aa85", "tags": ["unknown-group-61"], "status": "open"},
+  { "hash": "cdede6e05e8413012f4f7c560d18905c03f97116", "tags": ["unknown-group-62"], "status": "open"},
+  { "hash": "1d00bf38774baacf560ecdae0b9161c5df90e95d", "tags": ["unknown-group-63"], "status": "open"},
+  { "hash": "ce29f31d09cc9d31e2a95960f4221dde78d5f74c", "tags": ["unknown-group-64"], "status": "open"},
+  { "hash": "ca012575b7b968a25e203aef5ec92b5f1da5175d", "tags": ["unknown-group-65"], "status": "open"},
+  { "hash": "34e82b4e27579ca75b2a68dc403bb84ce9b7181d", "tags": ["unknown-group-66"], "status": "open"},
+  { "hash": "691cea3c484ebc5203c16281d7e293c6e7979094", "tags": ["unknown-group-67"], "status": "open"},
+  { "hash": "cb37ee69b63009681febe1d48873dfa6cca18e89", "tags": ["unknown-group-68"], "status": "open"},
+  { "hash": "3d55823e24b065a4247760756f51f8f9f9eac120", "tags": ["unknown-group-69"], "status": "open"},
+  { "hash": "dd131cf6a2911f60096307e59b3ee7c1e10dfcbc", "tags": ["unknown-group-70"], "status": "open"},
+  { "hash": "dd8993a501c06ca76fb0888d8cb990d0ca38f854", "tags": ["unknown-group-71"], "status": "open"},
+  { "hash": "a731c2c7a1c2553815e9cf8545964c1708ac86e2", "tags": ["unknown-group-71"], "status": "open"}
 ]

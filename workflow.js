@@ -43,7 +43,7 @@ function getPageOfErrorData (page, errors, options) {
       }
     }).catch(function (e) {
       console.error(e);
-      return getPageOfErrorData(page, errors, request-opts);
+      return getPageOfErrorData(page, errors, requestOpts);
     });
 }
 

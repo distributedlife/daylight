@@ -78,7 +78,7 @@ function symbolicateIfRequired (errors) {
       }
 
       if (result.status !== 'ok') {
-        console.log(result);
+        console.log(error.error.id, result);
 
         if (result.message === null) {
           results.noDsym.push(error);

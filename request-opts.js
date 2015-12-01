@@ -35,7 +35,7 @@ function updateErrorRequest (projectId, error) {
     headers: {
       'cookie': cookie,
       'content-type':'application/json',
-      'x-csrftoken': 'd3e52dff199b665daf3526cc97a90d6eeb13769040b91a32333790fcddde1a19'
+      'x-csrftoken': 'b1820cf755eb53550e5bfca8879575d6c8992f3030107055c0b01d79fcdf214b'
     },
     body: JSON.stringify(error)
   };
