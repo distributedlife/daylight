@@ -5,6 +5,7 @@ var request = Promise.promisify(require('request'));
 var flatten = require('lodash').flatten;
 
 var listErrorsOptions = require('./request-opts').listErrorsOptions;
+var listErrorInstancesOptions = require('./request-opts').listErrorInstancesOptions;
 var getErrorOptions = require('./request-opts').getErrorOptions;
 
 var project = process.env.MINT_PROJECT;
@@ -74,7 +75,33 @@ function expandErrors (errors) {
     });
   }
 
-  return Promise.map(errors, expand, {concurrency: 20});
+  return Promise.map(errors, expand, {concurrency: 50});
+}
+
+function getPageOfErrorInstanceData (errorId, page, instances, options) {
+  var requestOpts = listErrorInstancesOptions(project, errorId, page, options);
+
+  console.log('Getting error ' + errorId + ' instance page: ' + page );
+
+  return request(requestOpts)
+    .spread(function (response, body) {
+      if (response.statusCode !== 200) {
+        console.error(response);
+      }
+
+      var currentPageData = JSON.parse(body);
+
+      instances.push(currentPageData.data);
+
+      if (currentPageData.more) {
+        return getPageOfErrorInstanceData(errorId, page + 1, instances, options);
+      } else {
+        return instances;
+      }
+    }).catch(function (e) {
+      console.error(e);
+      return getPageOfErrorInstanceData(errorId, page, instances, requestOpts);
+    });
 }
 
 
@@ -83,5 +110,6 @@ module.exports = {
   logError: logError,
   getAllTheErrors: getAllTheErrors,
   getErrors: getErrors,
-  expandErrors: expandErrors
+  expandErrors: expandErrors,
+  getPageOfErrorInstanceData: getPageOfErrorInstanceData
 };

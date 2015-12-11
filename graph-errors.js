@@ -1,23 +1,50 @@
 'use strict';
 
+var Promise = require('bluebird');
+Promise.longStackTraces();
 var each = require('lodash').each;
 var map = require('lodash').map;
 var unique = require('lodash').unique;
+var flatten = require('lodash').flatten;
 var pluck = require('lodash').pluck;
 var moment = require('moment');
 
 var logError = require('./workflow').logError;
 var flattenErrors = require('./workflow').flattenErrors;
 var getAllTheErrors = require('./workflow').getAllTheErrors;
+var getPageOfErrorInstanceData = require('./workflow').getPageOfErrorInstanceData;
+
+function getInstanceDataForError (error) {
+  var instances = [];
+
+  function mergeInstancesWithError (instances) {
+    error.instances = flatten(unique(instances, 'id'));
+    return error;
+  }
+
+  return getPageOfErrorInstanceData(error.id, 1, instances)
+    .then(mergeInstancesWithError);
+}
+
+function getInstanceData (errors) {
+  return Promise.map(errors, getInstanceDataForError, {concurrency: 50});
+}
 
 function simplifyErrors (errors) {
-  return map(errors, function (error) {
-    return {
-      tag: error.tags[0],
-      counter: error.counter,
-      created: moment(error.created).format('YYYY-MM-DD')
-    };
-  });
+  return flatten(map(errors, function (error) {
+    if (error.counter !== error.instances.length) {
+      console.log(error);
+      console.log(error.counter, error.instances.length);
+    }
+
+    return map(error.instances, function(instance) {
+      return {
+        counter: 1,
+        tag: error.tags[0],
+        created: moment(instance.created).format('YYYY-MM-DD')
+      };
+    });
+  }));
 }
 
 function groupByDate (errors) {
@@ -53,6 +80,7 @@ function groupByDate (errors) {
 
 getAllTheErrors()
   .then(flattenErrors)
+  .then(getInstanceData)
   .then(simplifyErrors)
   .then(groupByDate)
   .catch(logError);
